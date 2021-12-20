@@ -1,5 +1,9 @@
 package com.example.demo.service;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +16,17 @@ public class UserServiceImpl implements IUserService {
 	UserRepository repository;
 
 	@Override
+	@Transactional
 	public String save(User user) {
 		System.out.println(user.getAge());
 		repository.save(user);
+		if(1 == 1)
+			throw new IllegalArgumentException();
 		return user.getName();
+	}
+
+	@Override
+	public List<User> getAllUser() {
+		return repository.findAll();
 	}
 }
