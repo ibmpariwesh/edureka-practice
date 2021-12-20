@@ -20,8 +20,8 @@ public class UserServiceImpl implements IUserService {
 	public String save(User user) throws Exception {
 		System.out.println(user.getAge());
 		repository.save(user);
-		if(1 == 1)
-			throw new Exception();
+//		if(1 == 1)
+//			throw new Exception();
 		return user.getName();
 	}
 
@@ -29,4 +29,12 @@ public class UserServiceImpl implements IUserService {
 	public List<User> getAllUser() {
 		return repository.findAll();
 	}
+
+	@Override
+	public void updateUser(User user, Integer id) {
+		user.setId(id);
+		repository.save(user);
+	}
+	
+	//3
 }

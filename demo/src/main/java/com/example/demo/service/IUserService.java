@@ -8,4 +8,7 @@ public interface IUserService {
 	String save(User user) throws Exception;
 
 	List<User> getAllUser();
+	//2
+
+	void updateUser(User user, Integer id);
 }
