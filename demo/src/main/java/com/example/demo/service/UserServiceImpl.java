@@ -16,12 +16,12 @@ public class UserServiceImpl implements IUserService {
 	UserRepository repository;
 
 	@Override
-	@Transactional
-	public String save(User user) {
+	@Transactional(rollbackOn = Exception.class)
+	public String save(User user) throws Exception {
 		System.out.println(user.getAge());
 		repository.save(user);
 		if(1 == 1)
-			throw new IllegalArgumentException();
+			throw new Exception();
 		return user.getName();
 	}
 

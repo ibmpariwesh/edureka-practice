@@ -17,7 +17,7 @@ public class UserController {
 	IUserService userService;
 
 	@PostMapping("/user")
-	String createUser(@RequestBody User user) {
+	String createUser(@RequestBody User user) throws Exception {
 		System.out.println(user.getName());
 		System.out.println(user.getAge());
 		userService.save(user);
