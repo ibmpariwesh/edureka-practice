@@ -5,11 +5,12 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
-
+@Primary
 @Service
 public class UserServiceImpl implements IUserService {
 	@Autowired
@@ -34,6 +35,11 @@ public class UserServiceImpl implements IUserService {
 	public void updateUser(User user, Integer id) {
 		user.setId(id);
 		repository.save(user);
+	}
+
+	@Override
+	public void deleteUser(Integer id) {
+		repository.deleteById(id);
 	}
 	
 	//3
