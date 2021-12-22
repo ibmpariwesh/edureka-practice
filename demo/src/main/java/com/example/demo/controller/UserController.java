@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,8 +31,6 @@ public class UserController {
 	@PostMapping("/user")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	Integer createUser(@Valid @RequestBody User user) throws Exception {
-		System.out.println(user.getName());
-		System.out.println(user.getAge());
 		userService.save(user);
 		return user.getId();
 	}

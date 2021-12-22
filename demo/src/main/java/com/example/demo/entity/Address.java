@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -14,8 +17,18 @@ public class Address {
 	@Column(name = "id")
 	private Integer id;
 	private String houseNumber;
-	@OneToOne(mappedBy = "address")
+//	@OneToOne(mappedBy = "address")
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Integer getId() {
 		return id;

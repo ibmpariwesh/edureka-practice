@@ -1,11 +1,14 @@
 package com.example.demo.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
@@ -22,15 +25,26 @@ public class User {
 	private Integer age;
 	
 	Float salary;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="address_id", referencedColumnName = "id")
-	private Address address;
-	public Address getAddress() {
-		return address;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Address> addresses;
+	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="address_id", referencedColumnName = "id")
+//	private Address address;
+//	public Address getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(Address address) {
+//		this.address = address;
+//	}
+
+	public List<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 	public Integer getAge() {
