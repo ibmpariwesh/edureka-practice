@@ -6,12 +6,14 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 @Primary
 @Service
+//@Profile("dev")
 public class UserServiceImpl implements IUserService {
 	@Autowired
 	UserRepository repository;

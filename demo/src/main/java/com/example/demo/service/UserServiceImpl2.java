@@ -2,9 +2,11 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
+@Profile("prod")
 @Service  //tells spring to treat this class as a spring bean
 public class UserServiceImpl2 implements IUserService{
 
